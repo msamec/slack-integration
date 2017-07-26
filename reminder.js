@@ -6,6 +6,6 @@ slack.setWebhook(process.env.WEBHOOK);
 slack.webhook({
     channel: '@marko.samec',
     username: 'MyLittleHelper',
-    text: '@channel Podsjetnik da do kraja dana upisete sve sate u crm te sve izmjene od danasnjeg dana "pushnete" na github'
+    text: '<!channel> Podsjetnik da do kraja dana upisete sve sate u crm te sve izmjene od danasnjeg dana "pushnete" na github'
 }, function(err, response) {
 });
