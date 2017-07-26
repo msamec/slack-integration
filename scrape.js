@@ -14,6 +14,13 @@ request.post('http://crm.am2studio.com/login.php', {
 }, function (error, response, body) {
     var yesterday = moment().add(-1, 'days');
     var today = moment();
+    /**
+     * If today is Monday then go back to friday instead of sunday
+     */
+    if(today.weekday() === 0) {
+        yesterday = yesterday.add(-2, 'days');
+        today = today.add(-2, 'days');
+    }
     var users = [
         {
             name: "Mladen Djudjic",
