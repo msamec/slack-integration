@@ -61,9 +61,8 @@ request.post('http://crm.am2studio.com/login.php', {
         _.forEach(users, function(user){
             message += user.name+': '+user.hours+'\n';
         });
-        webhookUri = 'https://hooks.slack.com/services/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';
         slack = new Slack();
-        slack.setWebhook(webhookUri);
+        slack.setWebhook(process.env.WEBHOOK);
         slack.webhook({
             channel: '@marko.samec',
             username: 'MyLittleHelper',
