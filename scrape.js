@@ -1,4 +1,5 @@
 var request = require('request').defaults({ jar: true });
+var moment = require('moment');
 var Slack = require('slack-node');
 const $ = require('cheerio');
 require('dotenv').config();
@@ -9,11 +10,13 @@ request.post('http://crm.am2studio.com/login.php', {
         pwd: process.env.PASSWORD
     }
 }, function (error, response, body) {
+    var yesterday = moment().add(-1, 'days').format('DD-MM-YYYY');
+    var today = moment().format('DD-MM-YYYY');
     request.post('http://crm.am2studio.com/admin/admin-ajax.php', {
         form: {
             action: 'account_screen_change',
             target_page: 'user-reports',
-            target_args: '?start_date=01-07-2017&end_date=31-07-2017&user=10&project=2773'
+            target_args: '?start_date='+yesterday+'&end_date='+today+'&user=10&project=2773'
         }
     }, function(error, response, body) {
         var start = body.indexOf('$(".billable .num").html(') + 25;
