@@ -64,7 +64,6 @@ request.post('http://crm.am2studio.com/login.php', {
         slack = new Slack();
         slack.setWebhook(process.env.WEBHOOK);
         slack.webhook({
-            channel: '@marko.samec',
             username: 'MyLittleHelper',
             text: message
         }, function(err, response) {
