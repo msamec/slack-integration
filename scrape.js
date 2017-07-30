@@ -33,7 +33,7 @@ function scrape() {
             pwd: process.env.PASSWORD
         }
     }, function (error, response, body) {
-        var yesterday = moment().add(-3, 'days');
+        var yesterday = moment().add(-1, 'days');
         var users = [
             {
                 name: "Mladen Djudjic",
