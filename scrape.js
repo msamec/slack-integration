@@ -33,10 +33,7 @@ function scrape() {
             pwd: process.env.PASSWORD
         }
     }, function (error, response, body) {
-        // var yesterday = moment().add(-1, 'days');
-        // var today = moment();
         var yesterday = moment().add(-3, 'days');
-        var today = moment().add(-2, 'days');
         var users = [
             {
                 name: "Mladen Djudjic",
@@ -61,7 +58,7 @@ function scrape() {
                 form: {
                     action: 'account_screen_change',
                     target_page: 'user-reports',
-                    target_args: '?start_date=' + yesterday.format('DD-MM-YYYY') + '&end_date=' + today.format('DD-MM-YYYY') + '&user=' + user.id + '&project=2773'
+                    target_args: '?start_date=' + yesterday.format('DD-MM-YYYY') + '&end_date=' + yesterday.format('DD-MM-YYYY') + '&user=' + user.id + '&project=2773'
                 },
                 headers: {
                     'Cookie': response.headers['set-cookie']
