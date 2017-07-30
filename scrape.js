@@ -10,7 +10,7 @@ require('dotenv').config();
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 var getDirName = require('path').dirname;
-const { exec } = require('child_process');
+//const { exec } = require('child_process');
 
 var remote  = 'https://'+process.env.GIT_USER+':'+process.env.GIT_PASSWORD+'@'+process.env.GIT_REPO;
 gitPromise()
@@ -82,7 +82,7 @@ function scrape() {
             });
             promises.push(promise);
 
-            exec('git --git-dir '+__dirname+'/tz/.git log --author="'+user.name+'" -p --after="'+yesterday.format('YYYY-MM-DD')+'T00:00:00" --before="'+yesterday.format('YYYY-MM-DD')+'T23:59:59" --all --pretty=oneline', function(err, stdout, stderr) {
+            require('child_process').exec('git --git-dir '+__dirname+'/tz/.git log --author="'+user.name+'" -p --after="'+yesterday.format('YYYY-MM-DD')+'T00:00:00" --before="'+yesterday.format('YYYY-MM-DD')+'T23:59:59" --all --pretty=oneline', function(err, stdout, stderr) {
                 var dir = __dirname + '/patches/'+user.id;
                 var html = diff2html.getPrettyHtml(stdout, {outputFormat: 'side-by-side'});
                 writeFile(dir +'/'+yesterday.format('DD-MM-YYYY')+'.html', html, function() {});
