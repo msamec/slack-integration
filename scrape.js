@@ -1,4 +1,4 @@
-var request = require('request').defaults({ jar: true });
+var request = require('request-promise-native');
 var diff2html = require('diff2html').Diff2Html;
 var moment = require('moment');
 moment.locale('hr');
@@ -42,7 +42,8 @@ function scrape() {
                 name: "Mladen Djudjic",
                 id: 46,
                 hours: 0
-            },
+            }
+            ,
             {
                 name: "Tomislav Bukal",
                 id: 10,
@@ -61,6 +62,9 @@ function scrape() {
                     action: 'account_screen_change',
                     target_page: 'user-reports',
                     target_args: '?start_date=' + yesterday.format('DD-MM-YYYY') + '&end_date=' + today.format('DD-MM-YYYY') + '&user=' + user.id + '&project=2773'
+                },
+                headers: {
+                    'Cookie': response.headers['set-cookie']
                 }
             }, function (error, response, body) {
                 var start = body.indexOf('$(".billable .num").html(') + 25;
@@ -76,6 +80,8 @@ function scrape() {
                     hours = 0;
                 }
                 users[key].hours = hours;
+            }).catch(function(){
+
             });
             promises.push(promise);
 
@@ -99,6 +105,8 @@ function scrape() {
             }, function (err, response) {
             });
         });
+
+    }).catch(function(err) {
 
     });
 }
