@@ -96,7 +96,7 @@ function doit() {
                 });
             });
             Promise.all(promises).then(function (values) {
-                var message = '*Radnih sati utroseno na ticketZone na dan ' + yesterday.format('MMMM Do YYYY') + ':*\n';
+                var message = '*Radnih sati utroseno na ticketZone na dan ' + yesterday.format('MMMM Do YYYY') + ':*\n*Authentication* = '+process.env.APACHE_USER+':'+process.env.APACHE_PASS+'\n';
                 _.forEach(users, function (user) {
                     var url = process.env.HOST_URL + '/diff.php?user_id=' + user.id + '&date=' + yesterday.format('DD-MM-YYYY');
                     message += '<' + url + '|' + user.name + '>: ' + user.hours + '\n';
