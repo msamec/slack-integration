@@ -6,6 +6,7 @@
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "moment": "^2.18.1",
+    "node-cron": "^1.2.0",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
     "simple-git": "^1.74.1",

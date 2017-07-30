@@ -341,6 +341,10 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
+node-cron@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/node-cron/-/node-cron-1.2.0.tgz#024987b1b492044aa00d75f5ca64aa7c94e0d256"
+
 nopt@1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-1.0.10.tgz#6ddd21bd2a31417b92727dd585f8a6f37608ebee"
