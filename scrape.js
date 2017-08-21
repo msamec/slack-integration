@@ -56,6 +56,11 @@ function doit() {
                     name: "Pero Knezevic",
                     id: 42,
                     hours: 0
+                },
+                {
+                    name: "Danijel Predojevic",
+                    id: 36,
+                    hours: 0
                 }
             ];
             var promises = [];
